@@ -9,7 +9,8 @@ pip install djangorestframework django-cors-headers
 ```
 
 Needed for frontend
-```
+```bash
+npm install bootstrap@4.6.0 reactstrap@8.9.0 --legacy-peer-deps
 npm install axios@0.21.1
 ```
 
