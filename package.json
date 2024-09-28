@@ -23,7 +23,7 @@
     "@hey-api/openapi-ts": "^0.45.0",
     "@sentry/browser": "~8.0.0",
     "@sentry/react": "~8.0.0",
-    "axios": "~1.6.8",
+    "axios": "^0.21.1",
     "bootstrap": "~5.3.3",
     "classnames": "~2.5.1",
     "cookie": "~0.6.0",
