@@ -1,30 +1,14 @@
-# Website Resume
+# Sunhack 2024! Lets get this bread
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
-[![License: MIT](https://img.shields.io/github/license/vintasoftware/django-react-boilerplate.svg)](LICENSE.txt)
+## Code to run backend server
+```bash
+python manage.py runserver
+```
 
-## About
-
-A [Django](https://www.djangoproject.com/) project boilerplate/template with a multitude of state-of-the-art libraries and tools. If pairing Django with React is a possibility for your project or spinoff, this is the best solution available. Save time with tools like:
-
--   [React](https://react.dev/), for building interactive UIs
--   [TypeScript](https://www.typescriptlang.org/), for static type checking
--   [Poetry](https://python-poetry.org/), for managing the environment and its dependencies
--   [django-js-reverse](https://github.com/vintasoftware/django-js-reverse), for generating URLs on JS
--   [React Bootstrap](https://react-bootstrap.github.io/), for responsive styling
--   [Webpack](https://webpack.js.org/), for bundling static assets
--   [Celery](https://docs.celeryq.dev/en/stable/), for background worker tasks
--   [WhiteNoise](https://whitenoise.readthedocs.io/en/stable/) with [brotlipy](https://github.com/python-hyper/brotlicffi), for efficient static files serving
--   [ruff](https://github.com/astral-sh/ruff) and [ESLint](https://eslint.org/) with [pre-commit](https://pre-commit.com/) for automated quality assurance (does not replace proper testing!)
-
-For continuous integration, a [Github Action](https://github.com/features/actions) configuration `.github/workflows/main.yml` is included.
-
-Also, includes a Render.com `render.yaml` and a working Django `production.py` settings, enabling easy deployments with ['Deploy to Render' button](https://render.com/docs/deploy-to-render). The `render.yaml` includes the following:
-
--   PostgreSQL, for DB
--   Redis, for Celery
-
-## Features Catalogue
+## Code to run frontend server
+```bash
+npm start
+```
 
 ### Frontend
 
