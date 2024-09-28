@@ -1,5 +1,12 @@
 # Sunhack 2024! Lets get this bread
 
+## Setup 
+
+pip install django
+pip install djangorestframework django-cors-headers
+
+npm install axios@0.21.1
+
 ## Code to run backend server
 ```bash
 python manage.py runserver
@@ -13,7 +20,9 @@ npm start
 ### Backend things
 
 Use this for migrating database once models are defined
+
 python manage.py makemigrations sunhack
+python manage.py migrate sunhack
 
 ### Frontend
 
