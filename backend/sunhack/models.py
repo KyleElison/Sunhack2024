@@ -17,7 +17,6 @@ class Song(models.Model):
     def _str_(self):
         return self.name
 
-
 class Playlist(models.Model):
     name = models.CharField(max_length=200)
     user = models.CharField(max_length=100) 
