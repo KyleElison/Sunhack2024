@@ -10,6 +10,11 @@ python manage.py runserver
 npm start
 ```
 
+### Backend things
+
+Use this for migrating database once models are defined
+python manage.py makemigrations sunhack
+
 ### Frontend
 
 -   `react` for building interactive UIs
