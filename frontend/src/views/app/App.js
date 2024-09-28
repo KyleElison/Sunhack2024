@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Modal from "../../components/Modal";
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Playlists from "../playlists/Playlists";
 
 class App extends Component {
   constructor(props) {
@@ -128,6 +130,13 @@ class App extends Component {
   render() {
     return (
       <main className="container">
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="playlists" element={<Playlists />}></Route>
+          </Routes>
+        </BrowserRouter>
+
         <h1 className="text-white text-uppercase text-center my-4">Todo app</h1>
         <div className="row">
           <div className="col-md-6 col-sm-10 mx-auto p-0">
