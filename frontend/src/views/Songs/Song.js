@@ -3,7 +3,7 @@ import './Songs.css';
 import { Link } from 'react-router-dom';
 
 // Define props in the function parameters
-const Song = ({ title, artist, album, duration }) => {
+const Song = ({title, artist, album, duration }) => {
   return (
     <div className="song-container">
       <h3>{title}</h3>

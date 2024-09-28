@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../App.css';
-import Song from '../Song';
+import '../app/App.css';
+import Song from './Song';
 
 function Songs() {
     
@@ -13,7 +13,7 @@ function Songs() {
 
   return (
     <div className="songs-page">
-      <h1>Songs</h1>
+      <h6>PlayList</h6>
       {songsData.map((song, index) => (
         <Song
           key={index}
