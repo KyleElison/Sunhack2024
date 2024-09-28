@@ -2,10 +2,16 @@
 
 ## Setup 
 
+Needed for backend
+```bash
 pip install django
 pip install djangorestframework django-cors-headers
+```
 
+Needed for frontend
+```
 npm install axios@0.21.1
+```
 
 ## Code to run backend server
 ```bash
