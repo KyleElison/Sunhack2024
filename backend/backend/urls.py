@@ -10,5 +10,5 @@ router.register(r'todos', views.TodoView, 'todo')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('testing/', views.Songs, name='song')
+    path('api/getPlaylists/', views.GetPlaylists, name='playlists')
 ]
