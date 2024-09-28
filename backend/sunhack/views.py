@@ -15,6 +15,8 @@ class TodoView(viewsets.ModelViewSet):
 def Songs(request):
     return HttpResponse("Testing...!")
 
+def GetPlaylist(request, playlist_id):
+    return HttpResponse(playlist_id)
 
 def GetPlaylists(request):
     playlists = []
