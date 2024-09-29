@@ -1,47 +1,73 @@
+/* General playlist container */
 .playlist {
-    background-image: linear-gradient(to bottom, #422c9b, #743ec0, #c667e6, #ffaae3c7, #f589e9, #c667e6ac, #743ec0);
-    border: 0;
+    background: linear-gradient(to bottom, #422c9b, #743ec0, #c667e6, #ffaae3c7, #f589e9, #c667e6ac, #743ec0);
     padding: 2%;
     width: 100vw;
     height: 100vh;
-    max-width: none;
     border-radius: 20px;
     box-sizing: border-box;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
   }
   
+  /* Header styling */
   .playlist .header {
     text-align: left;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
   
-  .playlist ul {
+  .playlist .header h6 {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .playlist .header h2 {
+    margin: 5px 0;
+    font-size: 28px;
+    color: #ffccff;
+  }
+  
+  .playlist .header p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #f8d0f8;
+  }
+  
+  /* Song list header */
+  .playlist .songListHeader ul {
     list-style: none;
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px;
-    padding: 0 20px;
+    padding: 10px 20px;
     margin: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border-bottom: 1px solid #f0c0f0;
   }
   
-  .playlist li {
-    font-size: 10px;
+  .playlist .songListHeader li {
+    font-size: 14px;
     flex: 1;
     text-align: left;
+    color: #fff;
   }
   
-  .playlist .song-list-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
+  /* Song list styling */
   .playlist .song-list {
     overflow-y: auto;
     flex-grow: 1;
-    padding: 0px 20px;
-    margin: 0px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Song list container (optional for more advanced layout) */
+  .playlist .song-list-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-grow: 1;
   }
   

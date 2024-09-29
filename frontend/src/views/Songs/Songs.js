@@ -34,15 +34,17 @@ function Songs() {
         <h2>{playlistData.name}</h2>
         <p>Likes: {playlistData.likes}</p>
       </div>
+  
       <div className="song-list">
         <div className="songListHeader">
           <ul>
-            <li> TITLE </li>
-            <li> ARTIST </li>
-            <li> ALBUM </li>
-            <li> DURATION </li>
+            <li>Title</li>
+            <li>Artist</li>
+            <li>Album</li>
+            <li>Duration</li>
           </ul>
         </div>
+  
         {playlistData.songs.map((song, index) => (
           <Song
             key={index}
@@ -55,6 +57,7 @@ function Songs() {
       </div>
     </div>
   );
+  
 }
 
 export default Songs;
