@@ -5,6 +5,7 @@ from .serializers import TodoSerializer
 from .models import Todo, Playlist, Song, SongPlaylists
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 # Create your views here.
@@ -30,7 +31,27 @@ def GetSongs(request):
 
 
 def GetPlaylist(request, playlist_id):
-    return HttpResponse(playlist_id)
+    print(playlist_id)
+    querySet = Playlist.objects.get(id=playlist_id)
+    data = model_to_dict(querySet)
+    
+    playlist = PlaylistModel(data['id'], data['name'], data['name'], data['likes'])
+
+    try:
+        querySet = SongPlaylists.objects.filter(playlistId=playlist.id)
+        data3 = [model_to_dict(instance) for instance in querySet]
+        for data_song in data3:
+            try:
+                querySet = Song.objects.get(id=data_song['songId'])
+                data2 = model_to_dict(querySet)
+                song = SongModel(data2['id'], data2['name'], data2['artist'])
+                playlist.songs.append(song.to_dict())
+            except:
+                print('song not found for playlist: ', playlist.id, ' and song:', data_song['songId'])
+    except:
+        print('playlist not found for id:', playlist.id)
+
+    return HttpResponse(json.dumps(playlist.to_dict(), indent=2), content_type='application/json')
 
 def GetPlaylists(request):
     querySet = Playlist.objects.all()
@@ -68,6 +89,33 @@ def likeIncrement(request, playlist_id):
     playlist.save()
     
     return HttpResponse({'message': 'Likes updated successfully', 'likes': playlist.likes})
+
+@csrf_exempt
+def createPlaylist(request):
+    
+    if request.method == 'POST':
+        try:
+            body_unicode = request.body.decode('utf-8')
+            data = json.loads(body_unicode)
+            name = data.get('name')
+            username = data.get('username')
+
+            playlist = Playlist(name=name, user=username, likes=0)
+            playlist.save()
+            playlistID = playlist.id
+
+            songs = data.get('songs', [])
+
+            for song in songs:
+                newSong = Song(name=song.get('name'), artist=song.get('artist'))
+                newSong.save()
+                playlistSong = SongPlaylists(playlistId=playlistID, songId=newSong.id)
+                playlistSong.save()
+            
+            return HttpResponse(playlistID)
+        except json.JSONDecodeError:
+            return HttpResponse({'error': 'Invalid JSON data'}, status=400)
+    return HttpResponse({'error': 'Invalid request method'}, status=405)
 
 
 class PlaylistModel():

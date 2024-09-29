@@ -1,11 +1,20 @@
 import React from 'react';
 import './Songs.css';
 import Song from './Song';
+import { useParams } from 'react-router-dom';
+import axios from "axios";
+
 
 function Songs() {
-    
+
+  const { playlistId } = useParams();
+  let myPlaylist = axios('/api/getPlaylist/' + playlistId);
+  console.log(myPlaylist);
+
+
+  // Example array of song data
   const playlistData = {
-    name: "name",
+    name: myPlaylist.name,
     username: "username",
     likes: 0,
     songs: [
@@ -121,14 +130,14 @@ function Songs() {
   }
   return (
     <div className="playlist">
-      <div className = "header">
-        <h6>PLAYLIST</h6>
+      <div className="header">
+        <h6>Playlist ID: {playlistId}</h6>
         <h2>{playlistData.name}</h2>
         <p>Created by: {playlistData.username}</p>
         <p>Likes: {playlistData.likes}</p>
       </div>
-      <div className="song-list-container">
-        <div className= "songListHeader">
+      <div className="song-list">
+        <div className="songListHeader">
           <ul >
             <li> TITLE </li>
             <li> ARTIST </li>
@@ -136,17 +145,15 @@ function Songs() {
             <li> DURATION </li>
           </ul>
         </div>
-        <div className="song-list">
-            {playlistData.songs.map((song, index) => (
-              <Song
-                key={index}
-                name={song.name}
-                artist={song.artist}
-                album={song.album}
-                duration={song.duration}
-              />
-            ))}
-        </div>
+        {playlistData.songs.map((song, index) => (
+          <Song
+            key={index}
+            name={song.name}
+            artist={song.artist}
+            album={song.album}
+            duration={song.duration}
+          />
+        ))}
       </div>
     </div>
   );
