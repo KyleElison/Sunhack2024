@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const CreatePlaylist = () => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [likes, setLikes] = useState(0);
   const [songs, setSongs] = useState([{ name: '', artist: '' }]);
+
+  const navigate = useNavigate();
+
 
   // Handle form submission
   const submitForm = async (e) => {
@@ -20,6 +24,7 @@ const CreatePlaylist = () => {
     // Send POST request to Django backend
     axios.post("/api/createPlaylist/", JSON.stringify(playlistData)).then( (res) => {
         console.log(res);
+        navigate('/Songs/' + res.data)
     });
   };
 
