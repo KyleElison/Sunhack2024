@@ -13,7 +13,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/playlists" element={<Playlists />}> </Route>
           <Route path="/createPlaylist" element={<CreatePlaylist />}> </Route>
-          <Route path="/Songs/Songs/:playlistId" element={<Songs />}> </Route>
+          <Route path="/Songs/:playlistId" element={<Songs />}> </Route>
         </Routes>
       </BrowserRouter>
     );

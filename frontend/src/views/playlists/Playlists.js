@@ -87,7 +87,7 @@ class Playlists extends Component {
     renderItems = () => {
         const { viewCompleted } = this.state;
         const newItems = this.state.playlists;
-        const linkThing = "../Songs/Songs.js/";
+        const linkThing = "../Songs/";
 
         return newItems.map((item) => (
             < div class="playlistContainer" >
