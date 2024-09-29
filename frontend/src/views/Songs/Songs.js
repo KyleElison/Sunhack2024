@@ -4,12 +4,107 @@ import Song from './Song';
 
 function Songs() {
     
-  // Example array of song data
   const playlistData = {
     name: "name",
     username: "username",
     likes: 0,
     songs: [
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
       {
         name: "Song One",
         artist: "Artist A",
@@ -32,24 +127,26 @@ function Songs() {
         <p>Created by: {playlistData.username}</p>
         <p>Likes: {playlistData.likes}</p>
       </div>
-      <div className="song-list">
-      <div className= "songListHeader">
-        <ul >
-          <li> TITLE </li>
-          <li> ARTIST </li>
-          <li> ALBUM </li>
-          <li> DURATION </li>
-        </ul>
-      </div>
-          {playlistData.songs.map((song, index) => (
-            <Song
-              key={index}
-              name={song.name}
-              artist={song.artist}
-              album={song.album}
-              duration={song.duration}
-            />
-          ))}
+      <div className="song-list-container">
+        <div className= "songListHeader">
+          <ul >
+            <li> TITLE </li>
+            <li> ARTIST </li>
+            <li> ALBUM </li>
+            <li> DURATION </li>
+          </ul>
+        </div>
+        <div className="song-list">
+            {playlistData.songs.map((song, index) => (
+              <Song
+                key={index}
+                name={song.name}
+                artist={song.artist}
+                album={song.album}
+                duration={song.duration}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );
