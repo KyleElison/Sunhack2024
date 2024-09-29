@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets
 from .serializers import TodoSerializer
-from .models import Todo, Playlist
+from .models import Todo, Playlist, Song, SongPlaylists
 from django.forms.models import model_to_dict
 import json
 
@@ -13,8 +13,8 @@ class TodoView(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
 
 
-def Songs(request):
-    return HttpResponse("Testing...!")
+# def Songs(request):
+#     return HttpResponse("Testing...!")
 
 def GetPlaylist(request, playlist_id):
     return HttpResponse(playlist_id)
@@ -25,15 +25,30 @@ def GetPlaylists(request):
     
     playlists = []
     for item in data:
-        print(item)
-        playlist = PlaylistModel(item['name'], item['name'], item['likes'])
+        playlist = PlaylistModel(item['id'], item['name'], item['name'], item['likes'])
+
+        try:
+            querySet = SongPlaylists.objects.filter(playlistId=playlist.id)
+            data3 = [model_to_dict(instance) for instance in querySet]
+            for data_song in data3:
+                try:
+                    querySet = Song.objects.get(id=data_song['songId'])
+                    data2 = model_to_dict(querySet)
+                    song = SongModel(data2['name'], data2['artist'])
+                    playlist.songs.append(song.to_dict())
+                except:
+                    print('song not found for playlist: ', playlist.id, ' and song:', data_song['songId'])
+        except:
+            print('playlist not found for id:', playlist.id)
+
         playlists.append(playlist.to_dict())
 
     return HttpResponse(json.dumps(playlists, indent=2), content_type='application/json')
 
 
 class PlaylistModel():
-    def __init__(self, name, username, likes):
+    def __init__(self, id, name, username, likes):
+        self.id = id
         self.name = name
         self.username = username
         self.likes = likes
@@ -41,16 +56,17 @@ class PlaylistModel():
 
     def to_dict(self):
         return {
+            'id': self.id,
             'name': self.name,
             'username': self.username,
             'likes': self.likes,
             'songs': self.songs 
         }
     
-class Song():
-    def __init__(self):
-        self.name = ""
-        self.artist = ""
+class SongModel():
+    def __init__(self, name, artist):
+        self.name = name
+        self.artist = artist
 
     def to_dict(self):
         return {
