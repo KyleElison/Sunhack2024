@@ -68,7 +68,6 @@ function Songs() {
 
   // Handle form submission
   const submitSong = async (e) => {
-    e.preventDefault();
 
     setSongs([...songs, newSong]);
 
