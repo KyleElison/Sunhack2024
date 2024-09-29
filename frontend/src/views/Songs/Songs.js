@@ -12,6 +12,31 @@ function Songs() {
     songs: [],
   });
 
+  const albums = [
+    "Echoes of the Night",
+    "Winds of Change",
+    "Dreamscapes",
+    "Mystic Horizons",
+    "Pulse of the Universe",
+    "Shadows and Light",
+    "Ocean Breeze",
+    "Rhythms of Time",
+    "Golden Horizon",
+    "Midnight Serenade"
+  ];
+  
+  const getRandomDuration = () => {
+    const minutes = Math.floor(Math.random() * 5) + 1;
+    const seconds = Math.floor(Math.random() * 60); 
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+  
+  const getRandomAlbum = () => {
+    const randomIndex = Math.floor(Math.random() * albums.length);
+    return albums[randomIndex];
+  };
+
+
   const navigate = useNavigate();
   const songListRef = useRef(null);
 
@@ -104,8 +129,8 @@ function Songs() {
             key={index}
             name={song.name}
             artist={song.artist}
-            album={song.album}
-            duration={song.duration}
+            album={getRandomAlbum()}
+            duration={getRandomDuration()}
           />
         ))}
       </div>
