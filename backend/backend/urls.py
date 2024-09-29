@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/getPlaylists/<int:playlist_id>', views.GetPlaylist, name='playlist'),
     path('api/likeIncrement/<int:playlist_id>', views.likeIncrement, name='likeIncrement'),
     path('api/getSongs/', views.GetSongs, name='songs'),
+    path('api/createPlaylist/', views.createPlaylist, name='createPlaylist')
     
 
 

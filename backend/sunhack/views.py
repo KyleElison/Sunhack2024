@@ -5,6 +5,7 @@ from .serializers import TodoSerializer
 from .models import Todo, Playlist, Song, SongPlaylists
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 # Create your views here.
@@ -68,6 +69,33 @@ def likeIncrement(request, playlist_id):
     playlist.save()
     
     return HttpResponse({'message': 'Likes updated successfully', 'likes': playlist.likes})
+
+@csrf_exempt
+def createPlaylist(request):
+    
+    if request.method == 'POST':
+        try:
+            body_unicode = request.body.decode('utf-8')
+            data = json.loads(body_unicode)
+            name = data.get('name')
+            username = data.get('username')
+
+            playlist = Playlist(name=name, user=username, likes=0)
+            playlist.save()
+            playlistID = playlist.id
+
+            songs = data.get('songs', [])
+
+            for song in songs:
+                newSong = Song(name=song.get('name'), artist=song.get('artist'))
+                newSong.save()
+                playlistSong = SongPlaylists(playlistId=playlistID, songId=newSong.id)
+                playlistSong.save()
+            
+            return HttpResponse(playlistID)
+        except json.JSONDecodeError:
+            return HttpResponse({'error': 'Invalid JSON data'}, status=400)
+    return HttpResponse({'error': 'Invalid request method'}, status=405)
 
 
 class PlaylistModel():

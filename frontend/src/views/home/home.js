@@ -8,6 +8,8 @@ const Home = () => {
             <h1>TESTING YAYAYAYAAYAYAYAYAYAYA</h1>
             <Link to="/playlists">Link</Link>
             <Link to="/Songs">Songs</Link>
+            <br></br>
+            <Link to="/createPlaylist">Create a playlist!</Link>
         </div>
     );
   }
