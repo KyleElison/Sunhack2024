@@ -6,8 +6,8 @@ const Home = () => {
     return (
         <div className="home-container">
             <div className="home-content">
-                <h1>Welcome to Music World</h1>
-                <p>Your go-to place for creating and managing playlists!</p>
+                <h1>Welcome to Playlist Battles</h1>
+                <p>Become the most liked playlists</p>
                 
                 <div className="home-links">
                     <Link className="home-link" to="/playlists">View Playlists</Link>

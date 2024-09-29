@@ -47,53 +47,63 @@ const CreatePlaylist = () => {
 
   return (
     <div className="create-playlist-container">
-  <button className="back-button" onClick={goHome}>Back</button>
-  <h2>Create a Playlist</h2>
-  <form className="playlist-form" onSubmit={submitForm}>
-    <div className="form-group">
-      <label>Playlist Name:</label>
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        <button className="back-button" onClick={goHome}>Back</button>
+        <h2>Create a Playlist</h2>
+        <form className="playlist-form" onSubmit={submitForm}>
+            <div className="form-group">
+                <label>Playlist Name:</label>
+                <input
+                    className="input-field"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+            </div>
+
+            <div className="form-group">
+                <label>Username:</label>
+                <input
+                    className="input-field"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
+            </div>
+
+            <h3>Add Songs</h3>
+            {songs.map((song, index) => (
+                <div key={index} className="song-group">
+                    <div className="form-group">
+                        <label>Song Name:</label>
+                        <input
+                            className="input-field"
+                            type="text"
+                            name="name"
+                            value={song.name}
+                            onChange={(e) => handleSongChange(index, e)}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Artist Name:</label>
+                        <input
+                            className="input-field"
+                            type="text"
+                            name="artist"
+                            value={song.artist}
+                            onChange={(e) => handleSongChange(index, e)}
+                        />
+                    </div>
+                </div>
+            ))}
+
+            <button type="button" className="add-button" onClick={addSongField}>Add Another Song</button>
+            <button type="submit" className="submit-button">Create Playlist</button>
+        </form>
     </div>
-
-    <div className="form-group">
-      <label>Username:</label>
-      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
-    </div>
-
-    <h3>Add Songs</h3>
-    {songs.map((song, index) => (
-      <div key={index} className="song-group">
-        <div className="form-group">
-          <label>Song Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={song.name}
-            onChange={(e) => handleSongChange(index, e)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Artist Name:</label>
-          <input
-            type="text"
-            name="artist"
-            value={song.artist}
-            onChange={(e) => handleSongChange(index, e)}
-          />
-        </div>
-      </div>
-    ))}
-
-    <button className="add-song-button" type="button" onClick={addSongField}>
-      Add Another Song
-    </button>
-
-    <button className="submit-button" type="submit">
-      Create Playlist
-    </button>
-  </form>
-</div>
-  )};
+);
+}
 
 export default CreatePlaylist;
