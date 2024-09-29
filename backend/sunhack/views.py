@@ -54,7 +54,7 @@ def GetPlaylist(request, playlist_id):
     return HttpResponse(json.dumps(playlist.to_dict(), indent=2), content_type='application/json')
 
 def GetPlaylists(request):
-    querySet = Playlist.objects.all()
+    querySet = Playlist.objects.all().order_by('-likes') 
     data = [model_to_dict(instance) for instance in querySet]
     
     playlists = []
