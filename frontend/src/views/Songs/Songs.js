@@ -2,10 +2,26 @@ import React from 'react';
 import './Songs.css';
 import Song from './Song';
 import { useParams } from 'react-router-dom';
+import axios from "axios";
+
+function getPlaylist(id) {
+  // Send a GET request
+
+  axios({
+    method: 'get',
+    url: "/api/GetPlaylist/" + id,
+    data: {
+      id: id,
+    }
+  })
+
+
+}
 
 function Songs() {
 
   const { playlistId } = useParams();
+  let myPlaylist = getPlaylist(playlistId).data;
 
   // Example array of song data
   const playlistData = {
