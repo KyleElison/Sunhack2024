@@ -10,9 +10,6 @@ function getPlaylist(id) {
   axios({
     method: 'get',
     url: "/api/GetPlaylist/" + id,
-    data: {
-      id: id,
-    }
   })
 
 
@@ -22,6 +19,7 @@ function Songs() {
 
   const { playlistId } = useParams();
   let myPlaylist = getPlaylist(playlistId).data;
+
 
   // Example array of song data
   const playlistData = {
