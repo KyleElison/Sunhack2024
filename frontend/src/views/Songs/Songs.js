@@ -1,28 +1,59 @@
 import React from 'react';
-import '../app/App.css';
+import './Songs.css';
 import Song from './Song';
+import { useParams } from 'react-router-dom';
 
 function Songs() {
-    
-  // Example array of song data
-  const songsData = [
-    { title: "Song 1", artist: "Artist 1", album: "Album 1", duration: "3:45" },
-    { title: "Song 2", artist: "Artist 2", album: "Album 2", duration: "4:20" },
-    { title: "Song 3", artist: "Artist 3", album: "Album 3", duration: "3:30" },
-  ];
 
+  const { playlistId } = useParams();
+
+  // Example array of song data
+  const playlistData = {
+    name: "name",
+    username: "username",
+    likes: 0,
+    songs: [
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      },
+      {
+        name: "Song One",
+        artist: "Artist A",
+        album: "Album X",
+        duration: "3:30"
+      }
+    ]
+  }
   return (
-    <div className="songs-page">
-      <h6>PlayList</h6>
-      {songsData.map((song, index) => (
-        <Song
-          key={index}
-          title={song.title}
-          artist={song.artist}
-          album={song.album}
-          duration={song.duration}
-        />
-      ))}
+    <div className="playlist">
+      <div className="header">
+        <h6>Playlist ID: {playlistId}</h6>
+        <h2>{playlistData.name}</h2>
+        <p>Created by: {playlistData.username}</p>
+        <p>Likes: {playlistData.likes}</p>
+      </div>
+      <div className="song-list">
+        <div className="songListHeader">
+          <ul >
+            <li> TITLE </li>
+            <li> ARTIST </li>
+            <li> ALBUM </li>
+            <li> DURATION </li>
+          </ul>
+        </div>
+        {playlistData.songs.map((song, index) => (
+          <Song
+            key={index}
+            name={song.name}
+            artist={song.artist}
+            album={song.album}
+            duration={song.duration}
+          />
+        ))}
+      </div>
     </div>
   );
 }
