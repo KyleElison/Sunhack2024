@@ -91,34 +91,36 @@ class Playlists extends Component {
 
         return newItems.map((item) => (
             < div class="playContainer" >
-                <Link to={linkThing + item.id}>
-                    <div class="me">
-                        <span>
-                            <br></br>
+
+                <div class="me">
+                    <span>
+                        <br></br>
+                        <Link to={linkThing + item.id}>
                             Playlist Name: {item.name}
-                        </span>
+                        </Link>
+                    </span>
 
-                        <span>
-                            Username: {item.username}
-                        </span>
+                    <span>
+                        Username: {item.username}
+                    </span>
 
-                        <span>
-                            Likes: {item.likes}
-                            <div class="firstSongs">
-                                {item.songs.length > 0 ? (
-                                    <>
-                                        <span>Song 1: {item.songs[0].name}</span>
-                                    </>
-                                ) : (
-                                    <span>No Songs</span>
-                                )}
-                            </div>
-                        </span>
-                        <button class="likeButton" onClick={() => this.likeIncrement(item.id)}>
-                            Like
-                        </button>
-                    </div >
-                </Link>
+                    <span>
+                        Likes: {item.likes}
+                        <div class="firstSongs">
+                            {item.songs.length > 0 ? (
+                                <>
+                                    <span>Song 1: {item.songs[0].name}</span>
+                                </>
+                            ) : (
+                                <span>No Songs</span>
+                            )}
+                        </div>
+                    </span>
+                    <button class="likeButton" onClick={() => this.likeIncrement(item.id)}>
+                        Like
+                    </button>
+                </div >
+
             </div >
         ));
     };
