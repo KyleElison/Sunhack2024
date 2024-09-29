@@ -35,3 +35,7 @@ span {
     float: right;
     padding: 4px;
 }
+
+a {
+    color: rgb(250, 176, 226);
+}
