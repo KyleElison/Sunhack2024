@@ -123,6 +123,23 @@ def createPlaylist(request):
             return HttpResponse({'error': 'Invalid JSON data'}, status=400)
     return HttpResponse({'error': 'Invalid request method'}, status=405)
 
+@csrf_exempt
+def createSong(request):
+    if request.method == 'POST':
+        try:
+            body_unicode = request.body.decode('utf-8')
+            data = json.loads(body_unicode)
+            name = data.get('name')
+            artist = data.get('artist')
+            playlistID = data.get('playlistId')
+            newSong = Song(name=name, artist=artist)
+            newSong.save()
+            playlistSong = SongPlaylists(playlistId=playlistID, songId=newSong.id)
+            playlistSong.save()
+            return HttpResponse(playlistID)
+        except json.JSONDecodeError:
+            return HttpResponse({'error': 'Invalid JSON data'}, status=400)
+    return HttpResponse({'error': 'Invalid request method'}, status=405)
 
 class PlaylistModel():
     def __init__(self, id, name, username, likes):
