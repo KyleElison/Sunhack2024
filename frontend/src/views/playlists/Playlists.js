@@ -86,9 +86,15 @@ class Playlists extends Component {
                     <span>
                         Likes: {item.likes}
                         <div class="firstSongs">
-                            <span>Song 1: {item.songs[0].name}</span>
-                            <br></br>
-                            <span>Song 2: {item.songs[0].name}</span>
+                            {item.songs.length > 0 ? (
+                                <>
+                                    <span>Song 1: {item.songs[0].name}</span>
+                                    <br></br>
+                                    <span>Song 2: {item.songs[0].name}</span>
+                                </>
+                            ) : (
+                                <span>No Songs</span>
+                            )}
                         </div>
                     </span>
                     <p class="likeButton">Like</p>
