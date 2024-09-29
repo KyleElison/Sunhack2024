@@ -36,7 +36,7 @@ function Songs() {
 
   useEffect(() => {
     if (songListRef.current) {
-      songListRef.current.scrollTop = songListRef.current.scrollHeight;
+      songListRef.current.scrollDown = songListRef.current.scrollHeight;
     }
   }, [playlistData.songs]);
   
@@ -74,7 +74,7 @@ function Songs() {
     // Send POST request to Django backend
     axios.post("/api/createSong/", JSON.stringify(newSong)).then( (res) => {
         console.log(res);
-        setPlaylistData((prevData) => ({ ...prevData, songs: [...prevData.songs, newSong] }));
+        setPlaylistData((prevData) => ({ ...prevData, songs: [newSong, ...prevData.songs] }));
         });
     
     setNewSong({ name: '', artist: '', playlistId: playlistId } );
