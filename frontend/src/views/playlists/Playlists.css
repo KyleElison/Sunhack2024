@@ -39,3 +39,9 @@ span {
 a {
     color: rgb(250, 176, 226);
 }
+
+.hometing {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

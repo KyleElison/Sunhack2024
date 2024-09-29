@@ -8,7 +8,7 @@ class Playlists extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: false, 
+            name: false,
             playlists: [],
             modal: false,
             activeItem: {
@@ -68,12 +68,14 @@ class Playlists extends Component {
                 this.refreshList();
             });
         }
-        
+
     }
 
     renderItems = () => {
         const newItems = this.state.playlists;
         const linkThing = "../Songs/";
+
+
 
         return newItems.map((item) => (
             < div class="playContainer" >
@@ -114,6 +116,7 @@ class Playlists extends Component {
     render() {
         return (
             <main className="container">
+                <Link class="hometing" to="../">Home</Link>
                 <h1>Playlists:</h1>
                 <br />
                 <ul>
