@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Songs.css';
 import Song from './Song';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 function Songs() {
@@ -11,6 +11,12 @@ function Songs() {
     likes: 0,
     songs: [],
   });
+
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate('/');
+  };
 
   let { playlistId } = useParams();
 
@@ -29,8 +35,9 @@ function Songs() {
 
   return (
     <div className="playlist">
+      <button className="back-button" onClick={goHome}>Back</button>
+  
       <div className="header">
-        <h6>Playlist ID: {playlistId}</h6>
         <h2>{playlistData.name}</h2>
         <p>Likes: {playlistData.likes}</p>
       </div>
@@ -57,6 +64,7 @@ function Songs() {
       </div>
     </div>
   );
+  
   
 }
 

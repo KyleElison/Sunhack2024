@@ -1,0 +1,73 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Home page container */
+  .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right, #422c9b, #743ec0, #c667e6);
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Content area styling */
+  .home-content {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the content */
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Header styling */
+  .home-content h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #f589e9;
+  }
+  
+  /* Subtitle styling */
+  .home-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #ffccff;
+  }
+  
+  /* Link buttons container */
+  .home-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Link buttons styling */
+  .home-link {
+    padding: 15px 30px;
+    background-color: #743ec0;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Hover and focus effects for buttons */
+  .home-link:hover {
+    background-color: #422c9b;
+    transform: scale(1.05);
+  }
+  
+  .home-link.create {
+    background-color: #c667e6;
+  }
+  
+  .home-link.create:hover {
+    background-color: #743ec0;
+  }
+  
