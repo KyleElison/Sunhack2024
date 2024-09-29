@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Playlists from '../playlists/Playlists'
 import Songs from '../Songs/Songs'
 import Home from '../home/home';
+import { useParams } from 'react-router-dom';
 
 const App = () => {
   return (

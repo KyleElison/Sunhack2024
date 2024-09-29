@@ -1,8 +1,11 @@
 import React from 'react';
 import './Songs.css';
 import Song from './Song';
+import { useParams } from 'react-router-dom';
 
 function Songs() {
+
+  const { playlistId } = useParams();
 
   // Example array of song data
   const playlistData = {
@@ -27,7 +30,7 @@ function Songs() {
   return (
     <div className="playlist">
       <div className="header">
-        <h6>PLAYLIST</h6>
+        <h6>Playlist ID: {playlistId}</h6>
         <h2>{playlistData.name}</h2>
         <p>Created by: {playlistData.username}</p>
         <p>Likes: {playlistData.likes}</p>
