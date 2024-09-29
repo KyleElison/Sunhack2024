@@ -95,11 +95,11 @@ class Playlists extends Component {
                             )}
                         </div>
                     </span>
-                    <button onClick={() => likeIncrement(item.id)}>
-                        <p class="likeButton">Like</p>
+                    <button class="likeButton" onClick={() => likeIncrement(item.id)}>
+                        Like
                     </button>
-                </div>
-            </div>
+                </div >
+            </div >
         ));
     };
 
