@@ -32,7 +32,6 @@ function Songs() {
       <div className="header">
         <h6>Playlist ID: {playlistId}</h6>
         <h2>{playlistData.name}</h2>
-        <p>Created by: {playlistData.username}</p>
         <p>Likes: {playlistData.likes}</p>
       </div>
       <div className="song-list">
