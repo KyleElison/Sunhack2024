@@ -1,6 +1,7 @@
 // App.js
 import {  BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Playlists from '../playlists/Playlists'
+import Songs from '../Songs/Songs'
 import Home from '../home/home';
  
 const App = () => {
@@ -9,6 +10,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/playlists" element={<Playlists />}>
+          </Route>
+          <Route path="/Songs" element={<Songs />}>
           </Route>
         </Routes>
       </BrowserRouter>

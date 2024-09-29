@@ -16,6 +16,9 @@ class TodoView(viewsets.ModelViewSet):
 def Songs(request):
     return HttpResponse("Testing...!")
 
+def GetPlaylist(request, playlist_id):
+    return HttpResponse(playlist_id)
+
 def GetPlaylists(request):
     querySet = Playlist.objects.all()
     data = [model_to_dict(instance) for instance in querySet]
