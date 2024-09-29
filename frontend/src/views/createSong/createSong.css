@@ -1,88 +1,78 @@
-body {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: rgb(255, 213, 241);
-    background-image: linear-gradient(to right, #422c9b, #743ec0, #c667e6);
-}
-
+/* Container for the playlist creation form */
 .create-playlist-container {
-    padding: 40px 20px 20px;
+    padding: 20px;
     max-width: 600px;
-    margin: 40px auto 0; 
-    margin-bottom: 40px;
-    background-color: rgba(0, 0, 0, 0.5); 
+    margin: 0 auto;
+    background-color: #c997ba;
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.create-playlist-container h2{
-    color: #f589e9;
-}
-.create-playlist-container h3{
-    color: #f589e9;
-}
-
-.back-button {
+  }
+  
+  /* Back button styling */
+  .back-button {
     position: absolute;
     top: 10px;
     left: 10px;
     padding: 10px 20px;
-    background-color: #743ec0;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #422c9b;
-}
-
-h2 {
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Form heading */
+  h2 {
     text-align: center;
-    color: #fff;
-}
-
-.playlist-form {
+    color: #333;
+  }
+  
+  /* Form styling */
+  .playlist-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-
-.form-group {
+  }
+  
+  /* Form group for each input and label pair */
+  .form-group {
     display: flex;
     flex-direction: column;
-}
-
-label {
+  }
+  
+  /* Label styling */
+  label {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #fff;
-}
-
-.input-field {
+    color: #333;
+  }
+  
+  /* Input field styling */
+  .input-field {
     padding: 10px;
     border-radius: 4px;
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
-}
-
-.input-field:focus {
-    border-color: #743ec0;
+  }
+  
+  .input-field:focus {
+    border-color: #007bff;
     outline: none;
-}
-
-.add-button,
-.submit-button {
+  }
+  
+  /* Button styling */
+  .add-button, .submit-button {
     padding: 10px 15px;
-    background-color: #743ec0;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -90,13 +80,14 @@ label {
     transition: background-color 0.3s ease;
     width: fit-content;
     align-self: center;
-}
-
-.add-button:hover,
-.submit-button:hover {
-    background-color: #422c9b;
-}
-
-.song-group {
+  }
+  
+  .add-button:hover, .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Additional margin between the song groups */
+  .song-group {
     margin-top: 10px;
-}
+  }
+  

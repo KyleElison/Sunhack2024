@@ -15,8 +15,8 @@ urlpatterns = [
     path('api/likeIncrement/<int:playlist_id>', views.likeIncrement, name='likeIncrement'),
     path('api/likeIncrementz/<int:playlist_id>', views.easterEgg, name='likeIncrementz'),
     path('api/getSongs/', views.GetSongs, name='songs'),
-    path('api/createPlaylist/', views.createPlaylist, name='createPlaylist')
-    
+    path('api/createPlaylist/', views.createPlaylist, name='createPlaylist'),
+    path('api/createSong/', views.createSong, name='createSong'),
 
 
 ]

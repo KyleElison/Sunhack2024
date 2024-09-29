@@ -114,7 +114,7 @@ class Playlists extends Component {
         return (
             <main className="container">
                 <Link class="hometing" to="../">Home</Link>
-                <h1>Playlists:</h1>
+                <h1>Playlists</h1>
                 <br />
                 <ul>
                     {this.renderItems()}
