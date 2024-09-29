@@ -66,7 +66,7 @@ body {
     top: 15px;
     left: 15px;
     padding: 10px 20px;
-    background-color: #ff5da2;
+    background-color: #743ec0;
     color: white;
     border-radius: 5px;
     text-decoration: none;
@@ -76,7 +76,7 @@ body {
 
 /* Hover effect for the home button */
 .hometing:hover {
-    background-color: #ff80c2;
+    background-color: #422c9b;
 }
 
 /* Like button styling */
@@ -91,6 +91,7 @@ body {
     transition: background-color 0.3s ease;
     float: right;
     margin-top: -20px;
+    font-weight: bold;
 }
 
 /* Hover effect for the like button */
@@ -106,5 +107,4 @@ ul {
 }
 .container h1{
    margin-top: 40px;
-   font-weight: bold;
 }

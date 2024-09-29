@@ -1,6 +1,6 @@
 /* General playlist container */
 .playlist {
-    background: linear-gradient(to bottom, #422c9b, #743ec0, #c667e6, #ffaae3c7, #f589e9, #c667e6ac, #743ec0);
+    background-image: linear-gradient(to right, #422c9b, #743ec0, #c667e6,#f589e9);
     padding: 2%;
     width: 100vw;
     height: 100vh;
