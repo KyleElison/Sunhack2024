@@ -3,7 +3,7 @@ import './Songs.css';
 import Song from './Song';
 
 function Songs() {
-    
+
   // Example array of song data
   const playlistData = {
     name: "name",
@@ -26,30 +26,30 @@ function Songs() {
   }
   return (
     <div className="playlist">
-      <div className = "header">
+      <div className="header">
         <h6>PLAYLIST</h6>
         <h2>{playlistData.name}</h2>
         <p>Created by: {playlistData.username}</p>
         <p>Likes: {playlistData.likes}</p>
       </div>
       <div className="song-list">
-      <div className= "songListHeader">
-        <ul >
-          <li> TITLE </li>
-          <li> ARTIST </li>
-          <li> ALBUM </li>
-          <li> DURATION </li>
-        </ul>
-      </div>
-          {playlistData.songs.map((song, index) => (
-            <Song
-              key={index}
-              name={song.name}
-              artist={song.artist}
-              album={song.album}
-              duration={song.duration}
-            />
-          ))}
+        <div className="songListHeader">
+          <ul >
+            <li> TITLE </li>
+            <li> ARTIST </li>
+            <li> ALBUM </li>
+            <li> DURATION </li>
+          </ul>
+        </div>
+        {playlistData.songs.map((song, index) => (
+          <Song
+            key={index}
+            name={song.name}
+            artist={song.artist}
+            album={song.album}
+            duration={song.duration}
+          />
+        ))}
       </div>
     </div>
   );

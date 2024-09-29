@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Modal from "../../components/Modal";
 import axios from "axios";
 import './Playlists.css'; // Import the CSS file
+import { Link } from "react-router-dom";
 
 class Playlists extends Component {
     constructor(props) {
@@ -86,35 +87,38 @@ class Playlists extends Component {
     renderItems = () => {
         const { viewCompleted } = this.state;
         const newItems = this.state.playlists;
+        const linkThing = "../Songs/Songs.js/";
 
         return newItems.map((item) => (
-            <div class="playlistContainer">
-                <div class="playlist">
-                    <span>
-                        <br></br>
-                        Playlist Name: {item.name}
-                    </span>
+            < div class="playlistContainer" >
+                <Link to={linkThing + item.id}>
+                    <div class="playlist">
+                        <span>
+                            <br></br>
+                            Playlist Name: {item.name}
+                        </span>
 
-                    <span>
-                        Username: {item.username}
-                    </span>
+                        <span>
+                            Username: {item.username}
+                        </span>
 
-                    <span>
-                        Likes: {item.likes}
-                        <div class="firstSongs">
-                            {item.songs.length > 0 ? (
-                                <>
-                                    <span>Song 1: {item.songs[0].name}</span>
-                                </>
-                            ) : (
-                                <span>No Songs</span>
-                            )}
-                        </div>
-                    </span>
-                    <button class="likeButton" onClick={() => this.likeIncrement(item.id)}>
-                        Like
-                    </button>
-                </div >
+                        <span>
+                            Likes: {item.likes}
+                            <div class="firstSongs">
+                                {item.songs.length > 0 ? (
+                                    <>
+                                        <span>Song 1: {item.songs[0].name}</span>
+                                    </>
+                                ) : (
+                                    <span>No Songs</span>
+                                )}
+                            </div>
+                        </span>
+                        <button class="likeButton" onClick={() => this.likeIncrement(item.id)}>
+                            Like
+                        </button>
+                    </div >
+                </Link>
             </div >
         ));
     };
