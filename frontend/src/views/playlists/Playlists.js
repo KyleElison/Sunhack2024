@@ -95,11 +95,24 @@ class Playlists extends Component {
                             )}
                         </div>
                     </span>
-                    <p class="likeButton">Like</p>
-                </div>
-            </div>
+                    <button class="likeButton" onClick={() => likeIncrement(item.id)}>
+                        Like
+                    </button>
+                </div >
+            </div >
         ));
     };
+
+    likeIncrement(id) {
+        // Send a PUT request
+        axios({
+            method: 'put',
+            url: "/api/likeIncrement",
+            data: {
+                id: id,
+            }
+        });
+    }
 
     render() {
         return (
