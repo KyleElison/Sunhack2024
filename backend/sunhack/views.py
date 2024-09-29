@@ -31,7 +31,30 @@ def GetSongs(request):
 
 
 def GetPlaylist(request, playlist_id):
-    return HttpResponse(playlist_id)
+    print(playlist_id)
+    querySet = Playlist.objects.get(id=playlist_id)
+    data = model_to_dict(querySet)
+    
+    playlists = []
+    playlist = PlaylistModel(data['id'], data['name'], data['name'], data['likes'])
+
+    try:
+        querySet = SongPlaylists.objects.filter(playlistId=playlist.id)
+        data3 = [model_to_dict(instance) for instance in querySet]
+        for data_song in data3:
+            try:
+                querySet = Song.objects.get(id=data_song['songId'])
+                data2 = model_to_dict(querySet)
+                song = SongModel(data2['id'], data2['name'], data2['artist'])
+                playlist.songs.append(song.to_dict())
+            except:
+                print('song not found for playlist: ', playlist.id, ' and song:', data_song['songId'])
+    except:
+        print('playlist not found for id:', playlist.id)
+
+    playlists.append(playlist.to_dict())
+
+    return HttpResponse(json.dumps(playlists, indent=2), content_type='application/json')
 
 def GetPlaylists(request):
     querySet = Playlist.objects.all()
