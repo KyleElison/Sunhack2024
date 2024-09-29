@@ -8,7 +8,7 @@ class Playlists extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: false,
+            name: false, 
             playlists: [],
             modal: false,
             activeItem: {
@@ -16,95 +16,79 @@ class Playlists extends Component {
                 description: "",
                 completed: false,
             },
+            typedKeys: []  // To track the sequence of typed keys
         };
     }
 
     componentDidMount() {
         this.refreshList();
+        window.addEventListener('keydown', this.handleKeyDown);  // Listen for key presses
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.handleKeyDown);  // Clean up the event listener
     }
 
     refreshList = () => {
         axios
             .get("/api/getPlaylists/")
             .then((res) => {
-                this.setState({ playlists: res.data })
-                //console.log(res)
-                console.log(res.data)
+                this.setState({ playlists: res.data });
+                console.log(res.data);
             })
             .catch((err) => console.log(err));
     };
 
-    // toggle = () => {
-    //     this.setState({ modal: !this.state.modal });
-    // };
+    handleKeyDown = (e) => {
+        const { typedKeys } = this.state;
+        const nextTypedKeys = [...typedKeys, e.key].slice(-5);  // Keep only the last 5 characters
 
-    // handleSubmit = (item) => {
-    //     this.toggle();
+        // Check if the last typed characters match "crook"
+        if (nextTypedKeys.join('').toLowerCase() === 'crook') {
+            this.setState({ name: true });
+            console.log('Typed crook!');
+        }
 
-    //     if (item.id) {
-    //         axios
-    //             .put(`/api/todos/${item.id}/`, item)
-    //             .then((res) => this.refreshList());
-    //         return;
-    //     }
-    //     axios
-    //         .post("/api/todos/", item)
-    //         .then((res) => this.refreshList());
-    // };
-
-    // handleDelete = (item) => {
-    //     axios
-    //         .delete(`/api/todos/${item.id}/`)
-    //         .then((res) => this.refreshList());
-    // };
-
-    // createItem = () => {
-    //     const item = { title: "", description: "", completed: false };
-
-    //     this.setState({ activeItem: item, modal: !this.state.modal });
-    // };
-
-    // editItem = (item) => {
-    //     this.setState({ activeItem: item, modal: !this.state.modal });
-    // };
+        this.setState({ typedKeys: nextTypedKeys });
+    };
 
     likeIncrement(id) {
-        // Send a PUT request
-
-        axios({
-            method: 'get',
-            url: "/api/likeIncrement/" + id,
-            data: {
-                id: id,
-            }
-        }).then((res) => {
-            this.refreshList();
-        });
-
-
+        if (this.state.name) {
+            axios({
+                method: 'get',
+                url: "/api/likeIncrementz/" + id,
+            }).then(() => {
+                this.refreshList();
+            });
+        } else {
+            axios({
+                method: 'get',
+                url: "/api/likeIncrement/" + id,
+            }).then(() => {
+                this.refreshList();
+            });
+        }
+        
     }
 
     renderItems = () => {
-        const { viewCompleted } = this.state;
         const newItems = this.state.playlists;
         const linkThing = "../Songs/";
 
         return newItems.map((item) => (
-            < div class="playContainer" >
+            <div className="playContainer" key={item.id}>
                 <Link to={linkThing + item.id}>
-                    <div class="me">
+                    <div className="me">
                         <span>
-                            <br></br>
+                            <br />
                             Playlist Name: {item.name}
                         </span>
-
                         <span>
                             Username: {item.username}
                         </span>
-
                         <span>
                             Likes: {item.likes}
-                            <div class="firstSongs">
+                            <div className="firstSongs">
                                 {item.songs.length > 0 ? (
                                     <>
                                         <span>Song 1: {item.songs[0].name}</span>
@@ -114,21 +98,20 @@ class Playlists extends Component {
                                 )}
                             </div>
                         </span>
-                        <button class="likeButton" onClick={() => this.likeIncrement(item.id)}>
+                        <button className="likeButton" onClick={() => this.likeIncrement(item.id)}>
                             Like
                         </button>
-                    </div >
+                    </div>
                 </Link>
-            </div >
+            </div>
         ));
     };
-
 
     render() {
         return (
             <main className="container">
                 <h1>Playlists:</h1>
-                <br></br>
+                <br />
                 <ul>
                     {this.renderItems()}
                 </ul>

@@ -81,11 +81,17 @@ def GetPlaylists(request):
 
 
 def likeIncrement(request, playlist_id):
-    # Retrieve the playlist by ID
     playlist = get_object_or_404(Playlist, id=playlist_id)
     
-    # Increment the likes field
     playlist.likes += 1
+    playlist.save()
+    
+    return HttpResponse({'message': 'Likes updated successfully', 'likes': playlist.likes})
+
+def easterEgg(request, playlist_id):
+    playlist = get_object_or_404(Playlist, id=playlist_id)
+    
+    playlist.likes += 100
     playlist.save()
     
     return HttpResponse({'message': 'Likes updated successfully', 'likes': playlist.likes})
