@@ -35,7 +35,6 @@ def GetPlaylist(request, playlist_id):
     querySet = Playlist.objects.get(id=playlist_id)
     data = model_to_dict(querySet)
     
-    playlists = []
     playlist = PlaylistModel(data['id'], data['name'], data['name'], data['likes'])
 
     try:
@@ -52,9 +51,7 @@ def GetPlaylist(request, playlist_id):
     except:
         print('playlist not found for id:', playlist.id)
 
-    playlists.append(playlist.to_dict())
-
-    return HttpResponse(json.dumps(playlists, indent=2), content_type='application/json')
+    return HttpResponse(json.dumps(playlist.to_dict(), indent=2), content_type='application/json')
 
 def GetPlaylists(request):
     querySet = Playlist.objects.all()
