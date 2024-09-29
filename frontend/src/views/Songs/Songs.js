@@ -1,133 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Songs.css';
 import Song from './Song';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 
-
 function Songs() {
-
-  const { playlistId } = useParams();
-  let myPlaylist = axios('/api/getPlaylist/' + playlistId);
-  console.log(myPlaylist);
-
-
-  // Example array of song data
-  const playlistData = {
-    name: myPlaylist.name,
+  const [playlistData, setPlaylistData] = useState({
+    name: "",
     username: "username",
     likes: 0,
-    songs: [
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
-      },
-      {
-        name: "Song One",
-        artist: "Artist A",
-        album: "Album X",
-        duration: "3:30"
+    songs: [],
+  });
+
+  let { playlistId } = useParams();
+
+  useEffect(() => {
+    const fetchPlaylistData = async () => {
+      try {
+        const res = await axios(`/api/getPlaylist/${playlistId}`);
+        setPlaylistData(res.data);
+      } catch (error) {
+        console.error("Error fetching playlist data:", error);
       }
-    ]
-  }
+    };
+
+    fetchPlaylistData();
+  }, [playlistId]);
+
   return (
     <div className="playlist">
       <div className="header">
@@ -138,7 +37,7 @@ function Songs() {
       </div>
       <div className="song-list">
         <div className="songListHeader">
-          <ul >
+          <ul>
             <li> TITLE </li>
             <li> ARTIST </li>
             <li> ALBUM </li>
