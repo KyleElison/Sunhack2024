@@ -1,23 +1,21 @@
 body {
     text-align: center;
     margin: 0;
-    padding: 40px 0 0; /* Add top padding */
+    padding: 0;
     box-sizing: border-box;
     color: rgb(255, 213, 241);
     background-color: rgb(63, 38, 60);
 }
 
-/* Container for the playlist creation form */
 .create-playlist-container {
-    padding: 20px;
+    padding: 40px 20px 20px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 40px auto 0; 
     background-image: linear-gradient(to bottom right, #c667e6, #ffaae3, #f589e9);
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Back button styling */
 .back-button {
     position: absolute;
     top: 10px;
@@ -35,26 +33,22 @@ body {
     background-color: #422c9b;
 }
 
-/* Form heading */
 h2 {
     text-align: center;
     color: #fff;
 }
 
-/* Form styling */
 .playlist-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Form group for each input and label pair */
 .form-group {
     display: flex;
     flex-direction: column;
 }
 
-/* Label styling */
 label {
     font-size: 14px;
     font-weight: bold;
@@ -62,7 +56,6 @@ label {
     color: #fff;
 }
 
-/* Input field styling */
 .input-field {
     padding: 10px;
     border-radius: 4px;
@@ -78,7 +71,6 @@ label {
     outline: none;
 }
 
-/* Button styling */
 .add-button,
 .submit-button {
     padding: 10px 15px;
@@ -97,7 +89,6 @@ label {
     background-color: #422c9b;
 }
 
-/* Additional margin between the song groups */
 .song-group {
     margin-top: 10px;
 }
