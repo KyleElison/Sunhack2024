@@ -59,7 +59,7 @@ def GetPlaylists(request):
     return HttpResponse(json.dumps(playlists, indent=2), content_type='application/json')
 
 
-def incrementLikes(request, playlist_id):
+def likeIncrement(request, playlist_id):
     # Retrieve the playlist by ID
     playlist = get_object_or_404(Playlist, id=playlist_id)
     

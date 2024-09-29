@@ -67,6 +67,22 @@ class Playlists extends Component {
     //     this.setState({ activeItem: item, modal: !this.state.modal });
     // };
 
+    likeIncrement(id) {
+        // Send a PUT request
+
+        axios({
+            method: 'get',
+            url: "/api/likeIncrement/" + id,
+            data: {
+                id: id,
+            }
+        }).then((res) => {
+            this.refreshList();
+        });
+
+
+    }
+
     renderItems = () => {
         const { viewCompleted } = this.state;
         const newItems = this.state.playlists;
@@ -95,7 +111,7 @@ class Playlists extends Component {
                             )}
                         </div>
                     </span>
-                    <button class="likeButton" onClick={() => likeIncrement(item.id)}>
+                    <button class="likeButton" onClick={() => this.likeIncrement(item.id)}>
                         Like
                     </button>
                 </div >
@@ -103,16 +119,6 @@ class Playlists extends Component {
         ));
     };
 
-    likeIncrement(id) {
-        // Send a PUT request
-        axios({
-            method: 'put',
-            url: "/api/likeIncrement",
-            data: {
-                id: id,
-            }
-        });
-    }
 
     render() {
         return (

@@ -12,7 +12,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/getPlaylists/', views.GetPlaylists, name='playlists'),
     path('api/getPlaylists/<int:playlist_id>', views.GetPlaylist, name='playlist'),
-    path('api/incrementLikes/<int:playlist_id>', views.incrementLikes, name='increment_likes'),
+    path('api/likeIncrement/<int:playlist_id>', views.likeIncrement, name='likeIncrement'),
     path('api/getSongs/', views.GetSongs, name='songs'),
     
 
