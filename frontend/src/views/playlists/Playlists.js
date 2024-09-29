@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from "../../components/Modal";
 import axios from "axios";
+import './Playlists.css'; // Import the CSS file
 
 class Playlists extends Component {
     constructor(props) {
@@ -71,65 +72,39 @@ class Playlists extends Component {
         const newItems = this.state.playlists;
 
         return newItems.map((item) => (
-            <li
-                key={item.id}
-                className="list-group-item d-flex justify-content-between align-items-center"
-            >
-                <span>
-                    Song: {item.name}
-                </span>
+            <div class="playlistContainer">
+                <div class="playlist">
+                    <span>
+                        <br></br>
+                        Playlist Name: {item.name}
+                    </span>
 
-                <span>
-                    Username: {item.username}
-                </span>
+                    <span>
+                        Username: {item.username}
+                    </span>
 
-                <span>
-                    Likes: {item.likes}
-                </span>
-
- 
-
-                <span>
-                    {/* <button
-                        className="btn btn-secondary mr-2"
-                        onClick={() => this.editItem(item)}
-                    >
-                        Edit
-                    </button>
-                    <button
-                        className="btn btn-danger"
-                        onClick={() => this.handleDelete(item)}
-                    >
-                        Delete
-                    </button> */}
-                </span>
-            </li>
+                    <span>
+                        Likes: {item.likes}
+                        <div class="firstSongs">
+                            <span>Song 1: {item.songs[0].name}</span>
+                            <br></br>
+                            <span>Song 2: {item.songs[0].name}</span>
+                        </div>
+                    </span>
+                    <p class="likeButton">Like</p>
+                </div>
+            </div>
         ));
     };
 
     render() {
         return (
             <main className="container">
-                <h1>PLAYLISTS</h1>
-                <h1 className="text-white text-uppercase text-center my-4">Todo app</h1>
-                <div className="row">
-                    <div className="col-md-6 col-sm-10 mx-auto p-0">
-                        <div className="card p-3">
-                            <div className="mb-4">
-                                {/* <button
-                                    className="btn btn-primary"
-                                    onClick={this.createItem}
-                                >
-                                    Add task
-                                </button> */}
-                            </div>
-                            {/* {this.renderTabList()} */}
-                            <ul className="list-group list-group-flush border-top-0">
-                                {this.renderItems()}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <h1>Playlists:</h1>
+                <br></br>
+                <ul>
+                    {this.renderItems()}
+                </ul>
                 {this.state.modal ? (
                     <Modal
                         activeItem={this.state.activeItem}

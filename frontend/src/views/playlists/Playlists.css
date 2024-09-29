@@ -1,39 +1,37 @@
-.App {
+body {
     text-align: center;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: rgb(255, 213, 241);
+    background-color: rgb(63, 38, 60);
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+span {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.playlist {
+    color: rgb(255, 213, 241);
+    background-color: rgb(199, 103, 230);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    text-align: center;
+    display: block;
+    border: 3px solid rgb(255, 170, 226);
+    border-radius: 4px;
+    margin-bottom: 5px;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.playlistContainer {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
 }
 
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+.likeButton {
+    float: right;
+    padding: 4px;
 }
