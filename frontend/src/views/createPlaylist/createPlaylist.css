@@ -4,7 +4,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     color: rgb(255, 213, 241);
-    background-color: rgb(63, 38, 60);
+    background-image: linear-gradient(to right, #422c9b, #743ec0, #c667e6);
 }
 
 .create-playlist-container {
