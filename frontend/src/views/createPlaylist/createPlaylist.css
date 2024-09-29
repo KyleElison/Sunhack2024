@@ -11,11 +11,15 @@ body {
     padding: 40px 20px 20px;
     max-width: 600px;
     margin: 40px auto 0; 
-    background-image: linear-gradient(to bottom right, #c667e6, #ffaae3, #f589e9);
+    margin-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.5); 
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.create-playlist-container h2{
+    color: #f589e9;
+}
 .back-button {
     position: absolute;
     top: 10px;
