@@ -12,7 +12,7 @@ span {
     padding-right: 15px;
 }
 
-.playlist {
+.me {
     color: rgb(255, 213, 241);
     background-color: rgb(199, 103, 230);
     margin-left: auto;
@@ -25,7 +25,7 @@ span {
     margin-bottom: 5px;
 }
 
-.playlistContainer {
+.playContainer {
     margin-left: auto;
     margin-right: auto;
     padding: 0px;

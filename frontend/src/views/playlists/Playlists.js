@@ -90,9 +90,9 @@ class Playlists extends Component {
         const linkThing = "../Songs/";
 
         return newItems.map((item) => (
-            < div class="playlistContainer" >
+            < div class="playContainer" >
                 <Link to={linkThing + item.id}>
-                    <div class="playlist">
+                    <div class="me">
                         <span>
                             <br></br>
                             Playlist Name: {item.name}
