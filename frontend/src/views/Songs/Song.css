@@ -1,0 +1,8 @@
+.song-container{
+    display: flex;
+    border-bottom: solid rgba(128, 128, 128, 0.184);
+    padding: 1vh;
+}
+.song-item{
+    flex: 1;
+}
