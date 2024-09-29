@@ -78,39 +78,36 @@ class Playlists extends Component {
 
 
         return newItems.map((item) => (
-            < div class="playContainer" >
-
-                <div class="me">
-                    <span>
-                        <br></br>
+            <div className="playContainer" key={item.id}>
+                <div className="me">
+                    <span className="playlist-link">
+                        <br />
                         <Link to={linkThing + item.id}>
                             Playlist Name: {item.name}
                         </Link>
                     </span>
-
+        
                     <span>
                         Username: {item.username}
                     </span>
-
+        
                     <span>
                         Likes: {item.likes}
-                        <div class="firstSongs">
+                        <div className="firstSongs">
                             {item.songs.length > 0 ? (
-                                <>
-                                    <span>Song 1: {item.songs[0].name}</span>
-                                </>
+                                <span>Song 1: {item.songs[0].name}</span>
                             ) : (
                                 <span>No Songs</span>
                             )}
                         </div>
                     </span>
-                    <button class="likeButton" onClick={() => this.likeIncrement(item.id)}>
+                    <button className="likeButton" onClick={() => this.likeIncrement(item.id)}>
                         Like
                     </button>
-                </div >
-
-            </div >
+                </div>
+            </div>
         ));
+        
     };
 
     render() {

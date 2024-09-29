@@ -15,7 +15,7 @@ function Songs() {
   const navigate = useNavigate();
 
   const goHome = () => {
-    navigate('/');
+    navigate('/playlists/');
   };
 
   let { playlistId } = useParams();
