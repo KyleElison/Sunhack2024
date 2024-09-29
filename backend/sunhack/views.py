@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets
 from .serializers import TodoSerializer
-from .models import Todo
+from .models import Todo, Playlist
+from django.forms.models import model_to_dict
 import json
 
 # Create your views here.
@@ -15,23 +16,25 @@ class TodoView(viewsets.ModelViewSet):
 def Songs(request):
     return HttpResponse("Testing...!")
 
-
 def GetPlaylists(request):
+    querySet = Playlist.objects.all()
+    data = [model_to_dict(instance) for instance in querySet]
+    
     playlists = []
-
-    for _ in range(6):
-        playlist = Playlist()
+    for item in data:
+        print(item)
+        playlist = PlaylistModel(item['name'], item['name'], item['likes'])
         playlists.append(playlist.to_dict())
 
     return HttpResponse(json.dumps(playlists, indent=2), content_type='application/json')
 
 
-class Playlist():
-    def __init__(self):
-        self.name = "name"
-        self.username = "username"
-        self.likes = 0
-        self.songs = [Song().to_dict(), Song().to_dict()]
+class PlaylistModel():
+    def __init__(self, name, username, likes):
+        self.name = name
+        self.username = username
+        self.likes = likes
+        self.songs = []
 
     def to_dict(self):
         return {
@@ -43,8 +46,8 @@ class Playlist():
     
 class Song():
     def __init__(self):
-        self.name = "name"
-        self.artist = "artist_example"
+        self.name = ""
+        self.artist = ""
 
     def to_dict(self):
         return {
