@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from .serializers import TodoSerializer
 from .models import Todo, Playlist, Song, SongPlaylists
 from django.forms.models import model_to_dict
+from django.shortcuts import get_object_or_404
 import json
 
 # Create your views here.
@@ -15,6 +16,18 @@ class TodoView(viewsets.ModelViewSet):
 
 # def Songs(request):
 #     return HttpResponse("Testing...!")
+
+def GetSongs(request):
+    querySet = Song.objects.all()
+    data = [model_to_dict(instance) for instance in querySet]
+
+    songs = []
+    for s in data:
+        song = SongModel(s['id'], s['name'], s['artist'])
+        songs.append(song.to_dict())
+
+    return HttpResponse(json.dumps(songs, indent=2), content_type='application/json')
+
 
 def GetPlaylist(request, playlist_id):
     return HttpResponse(playlist_id)
@@ -34,7 +47,7 @@ def GetPlaylists(request):
                 try:
                     querySet = Song.objects.get(id=data_song['songId'])
                     data2 = model_to_dict(querySet)
-                    song = SongModel(data2['name'], data2['artist'])
+                    song = SongModel(data2['id'], data2['name'], data2['artist'])
                     playlist.songs.append(song.to_dict())
                 except:
                     print('song not found for playlist: ', playlist.id, ' and song:', data_song['songId'])
@@ -44,6 +57,17 @@ def GetPlaylists(request):
         playlists.append(playlist.to_dict())
 
     return HttpResponse(json.dumps(playlists, indent=2), content_type='application/json')
+
+
+def incrementLikes(request, playlist_id):
+    # Retrieve the playlist by ID
+    playlist = get_object_or_404(Playlist, id=playlist_id)
+    
+    # Increment the likes field
+    playlist.likes += 1
+    playlist.save()
+    
+    return HttpResponse({'message': 'Likes updated successfully', 'likes': playlist.likes})
 
 
 class PlaylistModel():
@@ -64,12 +88,14 @@ class PlaylistModel():
         }
     
 class SongModel():
-    def __init__(self, name, artist):
+    def __init__(self, id, name, artist):
+        self.id = id
         self.name = name
         self.artist = artist
 
     def to_dict(self):
         return {
+            'id': self.id,
             'name': self.name,
             'artist': self.artist 
         }
