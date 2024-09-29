@@ -20,6 +20,10 @@ body {
 .create-playlist-container h2{
     color: #f589e9;
 }
+.create-playlist-container h3{
+    color: #f589e9;
+}
+
 .back-button {
     position: absolute;
     top: 10px;
